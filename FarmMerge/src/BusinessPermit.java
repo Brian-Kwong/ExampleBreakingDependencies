@@ -1,8 +1,8 @@
 import java.util.Date;
 
-public class BussinessPermit extends License {
+public class BusinessPermit extends License {
 
-    String bussinessName;
+    String businessName;
     int taxId;
     String description;
     Boolean isActive;
@@ -11,9 +11,9 @@ public class BussinessPermit extends License {
     String state;
     String notes;
 
-    public BussinessPermit(Date dateOAcquired, Date expiryDate, String licenseNumber, String name, String bussinessName, int taxId, String description, Boolean isActive, String address, String city, String state, String notes) {
+    public BusinessPermit(Date dateOAcquired, Date expiryDate, String licenseNumber, String name, String businessName, int taxId, String description, Boolean isActive, String address, String city, String state, String notes) {
         super(dateOAcquired, expiryDate, licenseNumber, name);
-        this.bussinessName = bussinessName;
+        this.businessName = businessName;
         this.taxId = taxId;
         this.description = description;
         this.isActive =  new Date().before(expiryDate);
@@ -23,8 +23,8 @@ public class BussinessPermit extends License {
         this.notes = notes;
     }
 
-    private boolean validateBussinessPermit(){
-        return bussinessName != null && !bussinessName.isEmpty() &&
+    private boolean validateBusinessPermit(){
+        return businessName != null && !businessName.isEmpty() &&
                 taxId > 0 &&
                 description != null && !description.isEmpty() &&
                 isActive &&
@@ -36,9 +36,9 @@ public class BussinessPermit extends License {
 
     public boolean validate(License accompaniedLicense) {
         return switch (accompaniedLicense) {
-            case DairyLicense dairyLicense -> validateBussinessPermit() && dairyLicense.getYearsOfExperience() > 2;
-            case BakerLicense bakerLicense -> validateBussinessPermit() && bakerLicense.getYearsOfExperience() > 2;
-            case null, default -> validateBussinessPermit();
+            case DairyLicense dairyLicense -> validateBusinessPermit() && dairyLicense.getYearsOfExperience() > 2;
+            case BakerLicense bakerLicense -> validateBusinessPermit() && bakerLicense.getYearsOfExperience() > 2;
+            case null, default -> validateBusinessPermit();
         };
     }
 }

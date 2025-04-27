@@ -1,17 +1,17 @@
 import java.awt.*;
 
-public class Bussiness extends Building{
+public class Business extends Building{
 
     long revenue;
     int employees;
     int openingHour;
     int closingHour;
     int hoursOpenPerDay;
-    String bussinessName;
+    String businessName;
     License license;
     boolean open;
 
-    public Bussiness(int id, Point position, int width, int height, int floors, String material, License license, long revenue, int employees, int openingHour, int closingHour, int hoursOpenPerDay, String bussinessName) {
+    public Business(int id, Point position, int width, int height, int floors, String material, License license, long revenue, int employees, int openingHour, int closingHour, int hoursOpenPerDay, String businessName) {
         super(id, position, width, height, floors, material);
         this.license = license;
         this.revenue = revenue;
@@ -19,16 +19,16 @@ public class Bussiness extends Building{
         this.openingHour = openingHour;
         this.closingHour = closingHour;
         this.hoursOpenPerDay = hoursOpenPerDay;
-        this.bussinessName = bussinessName;
+        this.businessName = businessName;
         this.open = false;
     }
 
     public void open(){
         if (license.validate()) {
-            System.out.println("Bussiness is open");
+            System.out.println("Business is open");
             open = true;
         } else {
-            System.out.println("Cannot open the bussiness, license is not valid");
+            System.out.println("Cannot open the business, license is not valid");
             open = false;
         }
     }

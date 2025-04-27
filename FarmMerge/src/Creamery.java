@@ -3,14 +3,14 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Random;
 
-public class Creamery extends Bussiness{
+public class Creamery extends Business {
 
-    String specality;
+    String specialty;
     DairyLicense dairyLicense;
 
-    public Creamery(int id, Point position, int width, int height, int floors, String material, License bussinessLicense, long revenue, int employees, int openingHour, int closingHour, int hoursOpenPerDay, String bussinessName, String specality, DairyLicense dl) {
-        super(id, position, width, height, floors, material, bussinessLicense, revenue, employees, openingHour, closingHour, hoursOpenPerDay, bussinessName);
-        this.specality = specality;
+    public Creamery(int id, Point position, int width, int height, int floors, String material, License bussinessLicense, long revenue, int employees, int openingHour, int closingHour, int hoursOpenPerDay, String businessName, String specialty, DairyLicense dl) {
+        super(id, position, width, height, floors, material, bussinessLicense, revenue, employees, openingHour, closingHour, hoursOpenPerDay, businessName);
+        this.specialty = specialty;
         this.dairyLicense = dl;
     }
 
@@ -47,5 +47,18 @@ public class Creamery extends Bussiness{
         }
     }
 
-
+    public void sell(Product product){
+        if(open){
+            Random rand = new Random();
+            DataRepository.getInstance().getUser().updateBalance(
+                    new Coin(rand.nextInt(),
+                            new Point(rand.nextInt(), rand.nextInt()),
+                            10,10, (int) product.price)
+            );
+        }
+        else{
+            System.out.println("Creamery is closed");
+        }
+    }
 }
+

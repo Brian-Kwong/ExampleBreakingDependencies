@@ -18,9 +18,9 @@ public class Player extends User {
                 "\n}";
     }
 
-    public void updateBalance(int amount) {
-        if (amount > 0) {
-            balance += amount;
+    public void updateBalance(Coin coin) {
+        if (coin.value > 0) {
+            balance += coin.value;
         } else {
             System.out.println("Invalid amount. Balance cannot be updated.");
         }

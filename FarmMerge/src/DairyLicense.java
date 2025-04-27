@@ -5,12 +5,12 @@ public class DairyLicense extends License{
 
     Date lastExamDate;
     Character grade;
-    String CDFACertifer;
+    String IDFACertifier;
     String restrictions;
 
-    public DairyLicense(Date dateOAcquired, Date expiryDate, String licenseNumber, String name, String CDFACertifer, Date lastExamDate, Character grade, String restrictions) {
+    public DairyLicense(Date dateOAcquired, Date expiryDate, String licenseNumber, String name, String IDFACertifier, Date lastExamDate, Character grade, String restrictions) {
         super(dateOAcquired, expiryDate, licenseNumber, name);
-        this.CDFACertifer = CDFACertifer;
+        this.IDFACertifier = IDFACertifier;
         this.lastExamDate = lastExamDate;
         this.grade = grade;
         this.restrictions = restrictions;
@@ -18,19 +18,19 @@ public class DairyLicense extends License{
 
     public int getYearsOfExperience() {
         Date currentDate = new Date(System.currentTimeMillis());
-        long diffInMillies = currentDate.getTime() - dateOAcquired.getTime();
-        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
+        long diffInMillSec = currentDate.getTime() - dateOAcquired.getTime();
+        long diffInDays = diffInMillSec / (1000 * 60 * 60 * 24);
         return (int) (diffInDays / 365);
     }
 
-    public String getCDFACertifer() {
-        return CDFACertifer;
+    public String getIDFACertifier() {
+        return IDFACertifier;
     }
 
     public boolean hasValidCDFACertification() throws IOException, InterruptedException {
         String[] validCDFACertifiers =  DataRepository.getInstance().getCDFAData();
         for (String certifier : validCDFACertifiers) {
-            if (certifier.equals(CDFACertifer)) {
+            if (certifier.equals(IDFACertifier)) {
                 return true;
             }
         }
@@ -42,7 +42,7 @@ public class DairyLicense extends License{
         return
             (lastExamDate != null && lastExamDate.before(new Date(System.currentTimeMillis()))) &&
             (grade != null && (grade == 'A' || grade == 'B' || grade == 'C')) &&
-            (CDFACertifer != null && !CDFACertifer.isEmpty());
+            (IDFACertifier != null && !IDFACertifier.isEmpty());
     }
 
 }
