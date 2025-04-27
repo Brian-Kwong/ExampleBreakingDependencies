@@ -18,7 +18,6 @@ public class Creamery extends Bussiness{
     public void open() {
         try {
             if (license.validate() && dairyLicense.validate() && dairyLicense.hasValidCDFACertification()) {
-                System.out.println("Creamery is open");
                 open = true;
             } else {
                 System.out.println("Cannot open the creamery, license is not valid");
