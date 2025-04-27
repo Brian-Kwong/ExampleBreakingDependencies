@@ -53,8 +53,7 @@ public class Creamery extends Business {
             DataRepository.getInstance().getUser().updateBalance(
                     new Coin(rand.nextInt(),
                             new Point(rand.nextInt(), rand.nextInt()),
-                            10,10, (int) product.price)
-            );
+                            10,10, (int) Math.ceil(product.getPrice())));
         }
         else{
             System.out.println("Creamery is closed");
