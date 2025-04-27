@@ -18,11 +18,11 @@ public class CreameryTest {
         db.connectToDatabase(
                 "user1",
                 "helloworld");
-        BussinessPermit bp = new BussinessPermit(
+        BusinessPermit bp = new BusinessPermit(
                 dateParser.parse("2023-01-01"),
                 dateParser.parse("2029-01-01"),
                 "123456789",
-                "Bussiness Permit for Creamery",
+                "Business Permit for Creamery",
                 "My Amazing Creamery",
                 12345,
                 "Farm Merge Inc",
@@ -68,11 +68,11 @@ public class CreameryTest {
         db.connectToDatabase(
                 "user1",
                 "helloworld");
-        BussinessPermit bp = new BussinessPermit(
+        BusinessPermit bp = new BusinessPermit(
                 dateParser.parse("2023-01-01"),
                 dateParser.parse("2029-01-01"),
                 "123456789",
-                "Bussiness Permit for Creamery",
+                "Business Permit for Creamery",
                 "My Amazing Creamery",
                 12345,
                 "Farm Merge Inc",

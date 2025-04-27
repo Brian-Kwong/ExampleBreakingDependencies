@@ -66,7 +66,7 @@ public class DataRepository {
                 // Parse the response to create a Board object
                 String responseBody = response.body();
                 Gson gson = new GsonBuilder().registerTypeAdapter(
-                        GameObjects.class, new GameObjectDeseralizer()
+                        GameObjects.class, new GameObjectDeserializer()
                 ).registerTypeAdapter(Color.class, new ColorJSONAdaptor()).registerTypeAdapter(Point.class, new PointJSONAdaptorClass()).create();
                 GameBoardEntry gameEntry = gson.fromJson(responseBody, GameBoardEntry.class);
                 this.gameObjects = gameEntry.getGameBoard();
@@ -92,7 +92,7 @@ public class DataRepository {
         }
     }
 
-    public int countNumberOfCattles() throws IOException, InterruptedException {
+    public int countNumberOfCastles() throws IOException, InterruptedException {
         if(user == null) {
             return 0;
         }
