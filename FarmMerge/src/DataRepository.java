@@ -12,10 +12,10 @@ import java.util.List;
 public class DataRepository {
 
     private static final String BACKEND_URL = "http://localhost:5000";
-    private static DataRepository instance;
-    private Player user;
-    private List<GameObjects> gameObjects;
-    private DataRepository() {
+    protected static DataRepository instance;
+    protected Player user;
+    protected List<GameObjects> gameObjects;
+    protected DataRepository() {
     }
     public static DataRepository getInstance() {
         if (instance == null) {
@@ -106,5 +106,9 @@ public class DataRepository {
             }
         }
         return count;
+    }
+
+    public void setInstance(TestDataRepo testRepo){
+        this.instance = testRepo;
     }
 }
